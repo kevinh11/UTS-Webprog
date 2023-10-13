@@ -59,6 +59,29 @@
 					<div class="text-center mt-3">
 						<p>Tidak punya akun? <a href="signup.php" id="anchor">Bikin akun baru aja!</a></p>
 					</div>
+
+					<?php
+						session_start();
+						function generate_captcha() {
+							$all = str_split('abcdefghijklmnopqrstuvwxyz0123456789');
+							$length = rand(6,10);
+							$captcha = '';	
+
+							for ($i = 0; $i < $length; $i++) {
+								$rand = rand(0, count($all)-1);
+								$char = $all[$rand];
+								shuffle($all);
+								if ($rand > floor(0.7 * count($all)-1)) {
+									$char = strtoupper($char);
+								}
+								$captcha = $captcha . $char;
+							}
+							echo $captcha;
+							$_SESSION['captcha'] = $captcha;
+						}
+
+						generate_captcha();
+					?>
 				</div>
 			</div>
 		</div>
