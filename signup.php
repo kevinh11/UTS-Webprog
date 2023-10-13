@@ -59,11 +59,35 @@
                         </div>
                         <button type="submit" class="btn btn-info mt-3">Sign Up</button>
                     </form>
+                    <?php
+						session_start();
+						function generate_captcha() {
+							$all = str_split('abcdefghijklmnopqrstuvwxyz0123456789');
+							$length = rand(6,10);
+							$captcha = '';	
+
+							for ($i = 0; $i < $length; $i++) {
+								$rand = rand(0, count($all)-1);
+								$char = $all[$rand];
+								shuffle($all);
+								if ($rand > floor(0.7 * count($all)-1)) {
+									$char = strtoupper($char);
+								}
+								$captcha = $captcha . $char;
+							}
+							echo $captcha;
+							$_SESSION['captcha'] = $captcha;
+						}
+
+						generate_captcha();
+					?>
                 </div>
             </div>
         </div>
     </div>
     </div>
+
+    
 </body>
 
 </html>
