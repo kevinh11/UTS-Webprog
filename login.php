@@ -41,47 +41,50 @@
 					</div>
 					<form action="login.php" method="post">
 						<div class="form-group">
-							<label for="username">Username</label>
-							<input type="text" class="form-control" name="username" required>
+							<label for="email">Email</label>
+							<input type="email" class="form-control" name="loginEmail" required>
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>
-							<input type="password" class="form-control" name="password" required>
+							<input type="password" class="form-control" name="loginPass" required>
 						</div>
-						<button type="submit" class="btn btn-info mt-3">Sign in</button>
+						<button type="submit" class="btn btn-info mt-3">Log In</button>
 						<a class="btn btn-outline-dark ml-3 mt-3" href="/users/googleauth" role="button" style="text-transform:none">
 							<img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
 							Sign in with Google
 						</a>
-						<!-- NI TOLOL BET TOMBOL GOOGLENYA WKAOWKAOKWOKAW
-					BLOM ACTUALLY USE API AND SHIT OBV-->
+						<!-- NI TOLOL BET TOMBOL GOOGLENYA WKAOWKAOKWOKAW-->
+						<div class="form-group">
+							<label for="captcha">Verify You are not a Bot:</label>
+							<input type="text" class="form-control" name="loginCaptcha" required>
+						</div>
 					</form>
+					<?php
+					session_start();
+					function generate_captcha()
+					{
+						$all = str_split('abcdefghijklmnopqrstuvwxyz0123456789');
+						$length = rand(6, 10);
+						$captcha = '';
+
+						for ($i = 0; $i < $length; $i++) {
+							$rand = rand(0, count($all) - 1);
+							$char = $all[$rand];
+							shuffle($all);
+							if ($rand > floor(0.7 * count($all) - 1)) {
+								$char = strtoupper($char);
+							}
+							$captcha = $captcha . $char;
+						}
+						echo $captcha;
+						$_SESSION['captcha'] = $captcha;
+					}
+
+					generate_captcha();
+					?>
 					<div class="text-center mt-3">
 						<p>Tidak punya akun? <a href="signup.php" id="anchor">Bikin akun baru aja!</a></p>
 					</div>
-
-					<?php
-						session_start();
-						function generate_captcha() {
-							$all = str_split('abcdefghijklmnopqrstuvwxyz0123456789');
-							$length = rand(6,10);
-							$captcha = '';	
-
-							for ($i = 0; $i < $length; $i++) {
-								$rand = rand(0, count($all)-1);
-								$char = $all[$rand];
-								shuffle($all);
-								if ($rand > floor(0.7 * count($all)-1)) {
-									$char = strtoupper($char);
-								}
-								$captcha = $captcha . $char;
-							}
-							echo $captcha;
-							$_SESSION['captcha'] = $captcha;
-						}
-
-						generate_captcha();
-					?>
 				</div>
 			</div>
 		</div>
@@ -89,3 +92,38 @@
 </body>
 
 </html>
+
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'webprog');//ganti nama database
+
+if (isset($_POST['loginPass'])) {
+	$email = $_POST['loginEmail'];
+	$pass = $_POST['loginPass'];
+
+
+	$query = "SELECT admin_pass FROM admin WHERE admin_email = ?";
+	$admin_check = $conn->prepare($query);
+	$admin_check->bind_param("s", $email);
+	$admin_check->execute();
+	$admin_check->bind_result($hashedPass);
+	$admin_result = $admin_check->fetch();
+
+	$query = "SELECT user_pass FROM user WHERE user_email = ?";
+	$user_check = $conn->prepare($query);
+	$user_check->bind_param("s", $email);
+	$user_check->execute();
+	$user_check->bind_result($hashedPass);
+	$user_result = $user_check->fetch();
+
+	if ($admin_result && password_verify($pass, $hashedPass)) {
+		header('Location:admin.php');
+		exit;
+	} elseif ($user_result && password_verify($pass, $hashedPass)) {
+		header('Location:user.php');
+		exit;
+	} else {
+		echo "Login failed. Please check your email and password.";
+	}
+}
+
+?>
