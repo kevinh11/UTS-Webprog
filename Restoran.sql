@@ -47,3 +47,6 @@ VALUES
 	('F0008', 'Es Jeruk', 'Minuman', 'Es Jeruk adalah minuman segar yang terbuat dari perasan jeruk manis yang dicampur dengan es dan gula', 6000, 'gambarMenu/esJeruk.jpg'),
 	('F0009', 'Nasi Putih', 'Makanan', 'Nasi Putih adalah beras yang dimasak hingga matang', 10000, 'gambarMenu/nasiPutih.jpg'),
 	('F0010', 'Kopi', 'Minuman', 'Kopi adalah minuman yang terbuat dari biji kopi yang digiling', 5000, 'gambarMenu/kopi.jpg');
+
+
+    
