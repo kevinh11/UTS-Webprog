@@ -9,8 +9,12 @@
 header {
     position: relative;
     background-color: #FE4444;
+    min-height: 12vh;
 }
 
+ .hamburger-menu {
+    display: none;
+} 
 
 body {
     min-height:100vh;
@@ -72,12 +76,52 @@ input[type='password'], input[type='text'], input[type='email'] {
     background-color: #FE4444 ;
 }
 
+.hero a {
+    text-decoration: none;
+    color: white;
+    
+}
+
 #hero-img {
     width: 50%;
     transition: 0.5s;
     aspect-ratio: 16/9;
 }
 
+
 @media screen and (max-width:800px) {
-    
+    #hero-image {
+        order: 1;
+    }
+
+    .hero-text {
+        order:1;
+        
+    }
+
+    .hero-text h1 {
+        font-size:2em;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    #navbar-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        width: 100vw;
+        min-height: 1000px;
+        position: absolute;
+        top: 70px;
+        left:0px;
+        background: #FF4848;
+        
+    }
+
+    #navbar-container > * {
+        font-size:3rem;
+    }
 }
