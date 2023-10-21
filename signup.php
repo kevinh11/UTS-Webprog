@@ -76,7 +76,9 @@ include('components/header.php');
 
         if ($userCaptcha !== $generatedCaptcha) {
             echo "CAPTCHA verification failed. Please enter the correct CAPTCHA.";
-        } else {
+        } 
+        
+        else {
             $firstName = isset($_POST['signUpFirst']) ? $_POST['signUpFirst'] : NULL;
             $lastName = isset($_POST['signUpLast']) ? $_POST['signUpLast'] : NULL;
             $email = $_POST['signUpEmail'];
@@ -85,14 +87,15 @@ include('components/header.php');
 
             if ($password !== $confirmPassword) {
                 echo "Passwords do not match. Please try again.";
-            } else {
-                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
+            } 
+            
+            else {
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);    
                 $query = "INSERT INTO user (user_first, user_last, user_email, user_pass, user_birth, user_gender) VALUES (?, ?, ?, ?, NULL, NULL)";
                 $insertStatement = $conn->prepare($query);
                 $insertStatement->bind_param("ssss", $firstName, $lastName, $email, $hashedPassword,);
                 if ($insertStatement->execute()) {
-                    header('Location: user.php');
+                    header('Location: login.php');
                     exit;
                 } else {
                     echo "Registration failed: " . $conn->error;

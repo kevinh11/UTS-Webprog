@@ -14,8 +14,6 @@
       $conn = mysqli_connect('localhost', 'root', '', 'restaurant'); 
       $query = 'SELECT * FROM MENU';
 
-      
-    
     ?>
   </div>
   <?php

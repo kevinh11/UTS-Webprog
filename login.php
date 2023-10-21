@@ -68,8 +68,6 @@ include('components/header.php');
 			$email = $_POST['loginEmail'];
 			$pass = $_POST['loginPass'];
 
-			$attempts =
-
 			$query = "SELECT admin_pass FROM admin WHERE admin_email = ?";
 			$admin_check = $conn->prepare($query);
 			$admin_check->bind_param("s", $email);
@@ -83,18 +81,26 @@ include('components/header.php');
 			$user_check->execute();
 			$user_check->bind_result($hashedPass);
 			$user_result = $user_check->fetch();
+			
+			
+			function setUserCookies($status, $email) {
+				setcookie('userEmail', $email, time() + (86400 * 7));
+				setcookie('loggedIn', true, time() + (86400 * 7)); 
+				setcookie('userStatus',$status, time() + (86400 * 7));
 
+			}
 			if ($admin_result && password_verify($pass, $hashedPass)) {
+				setUserCookies('admin', $_POST['loginEmail']);
 				header('Location:admin.php');
-				setcookie('loggedIn', true, time() + (86400 * 7));
-				setcookie('userStatus', 'admin', time() + (86400 * 7));
 				exit;
-			} elseif ($user_result && password_verify($pass, $hashedPass)) {
-				setcookie('loggedIn', true, time() + (86400 * 7));
-				setcookie('userStatus', 'customer', time() + (86400 * 7));
-
+			} 
+			
+			else if ($user_result && password_verify($pass, $hashedPass)) {
+				setUserCookies('customer', $_POST['loginEmail']);
 				header('Location:user.php');
-			} else {
+			} 
+			
+			else {
 				echo "<p class='text-danger'>Login failed. Please check your email and password.</p>";
 			}
 		}

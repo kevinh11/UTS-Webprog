@@ -1,6 +1,8 @@
 CREATE DATABASE restaurant;
 USE restaurant;
 
+DROP DATABASE restaurant;
+
 CREATE TABLE menu(
 	food_id VARCHAR(5) NOT NULL, 
     food_name VARCHAR(30), 
@@ -12,7 +14,6 @@ CREATE TABLE menu(
 );
 
 CREATE TABLE user(
-	user_id INT AUTO_INCREMENT NOT NULL, 
     user_first VARCHAR(30), 
 	user_last VARCHAR(30), 
     user_email VARCHAR(30),
@@ -20,7 +21,7 @@ CREATE TABLE user(
     user_birth DATE,
     user_gender VARCHAR(10),
     CHECK (user_gender IN ('M', 'F')),
-    PRIMARY KEY (user_id)
+    PRIMARY KEY (user_email)
 );
 
 CREATE TABLE admin(
@@ -50,3 +51,5 @@ VALUES
 
 
 SELECT * FROM MENU;
+
+SELECT * FROM user;
