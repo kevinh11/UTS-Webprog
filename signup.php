@@ -1,10 +1,10 @@
 <?php
-	include('components/header.php');
+include('components/header.php');
 ?>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  
+
     <div class='login-page'>
         <div class="container mt-5">
             <div class="row justify-content-center">
@@ -12,8 +12,7 @@
                     <div class="text-center">
                         <h1>Sign Up</h1>
                     </div>
-                    <!-- form actions masih kurang tau gw -->
-                    <form action="login.php" method="post">
+                    <form action="signup.php" method="post">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
                             <input type="text" class="form-control" name="signUpFirst">
@@ -34,10 +33,10 @@
                             <label for="confirmPassword">Confirm Password</label>
                             <input type="password" class="form-control" name="confirmPass" required>
                         </div>
-                        <p>CAPTCHA:</p>
                         <?php generate_captcha() ?>
+                        <input type="hidden" name="generatedCaptcha" value="<?php echo $_SESSION['captcha']; ?>">
                         <div class="form-group mt-2">
-                            <label for="captcha">Verify You are not a Bot: </label>
+                            <label for="signUp">Verify You are not a Bot: </label>
                             <input type="text" class="form-control" name="signUpCaptcha" required>
                         </div>
                         <button type="submit" class="btn btn-info mt-3">Sign Up</button>
@@ -60,7 +59,7 @@
                             $captcha = $captcha . $char;
                         }
                         echo $captcha;
-                        
+
                         $_SESSION['captcha'] = $captcha;
                     }
                     ?>
@@ -70,16 +69,14 @@
     </div>
     </div>
     <?php
-    $conn = mysqli_connect('localhost', 'root', '', 'restaurant'); //isi nama database
+    $conn = mysqli_connect('localhost', 'root', '', 'restaurant');
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $userCaptcha = $_POST['captcha'];
-        $generatedCaptcha = $_SESSION['captcha'];
+        $userCaptcha = $_POST['signUpCaptcha'];
+        $generatedCaptcha = $_POST['generatedCaptcha'];
 
         if ($userCaptcha !== $generatedCaptcha) {
             echo "CAPTCHA verification failed. Please enter the correct CAPTCHA.";
-        } 
-        
-        else {
+        } else {
             $firstName = isset($_POST['signUpFirst']) ? $_POST['signUpFirst'] : NULL;
             $lastName = isset($_POST['signUpLast']) ? $_POST['signUpLast'] : NULL;
             $email = $_POST['signUpEmail'];
@@ -88,17 +85,14 @@
 
             if ($password !== $confirmPassword) {
                 echo "Passwords do not match. Please try again.";
-                
-            } 
-            
-            else {
+            } else {
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-                $query = "INSERT INTO users (user_first, user_last, user_email, user_pass) VALUES (?, ?, ?)";
+                $query = "INSERT INTO user (user_first, user_last, user_email, user_pass, user_birth, user_gender) VALUES (?, ?, ?, ?, NULL, NULL)";
                 $insertStatement = $conn->prepare($query);
-                $insertStatement->bind_param("sss", $username, $email, $hashedPassword);
+                $insertStatement->bind_param("ssss", $firstName, $lastName, $email, $hashedPassword,);
                 if ($insertStatement->execute()) {
-                    header('Location: user.php'); //admin ngga register kn?
+                    header('Location: user.php');
                     exit;
                 } else {
                     echo "Registration failed: " . $conn->error;
@@ -111,7 +105,7 @@
     ?>
 
     <?php
-        include('components/footer.php');
+    include('components/footer.php');
     ?>
 
 </body>

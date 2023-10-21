@@ -12,7 +12,7 @@ CREATE TABLE menu(
 );
 
 CREATE TABLE user(
-	user_id VARCHAR(5) NOT NULL, 
+	user_id INT AUTO_INCREMENT NOT NULL, 
     user_first VARCHAR(30), 
 	user_last VARCHAR(30), 
     user_email VARCHAR(30),
@@ -24,7 +24,7 @@ CREATE TABLE user(
 );
 
 CREATE TABLE admin(
-	admin_id VARCHAR(5) NOT NULL, 
+	admin_id INT AUTO_INCREMENT NOT NULL, 
     admin_first VARCHAR(30), 
 	admin_last VARCHAR(30), 
     admin_email VARCHAR(30),
