@@ -3,7 +3,6 @@ include('components/header.php');
 ?>
 
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 	<div class='login-page'>
 		<div class="container mt-5 d-flex flex-column justify-content-center ">
@@ -53,8 +52,7 @@ include('components/header.php');
 						<img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
 						Sign in with Google
 					</a>
-					<!-- ini button google hrsny masuk form ato ngga? -->
-					<div class="text-center mt-3">
+				<div class="text-center mt-3">
 						<p>Tidak punya akun? <a href="signup.php" id="anchor">Bikin akun baru aja!</a></p>
 					</div>
 				</div>
@@ -85,26 +83,30 @@ include('components/header.php');
 				$user_check->bind_result($userHashedPass);
 				$user_result = $user_check->fetch();
 
-				function setUserCookies($status, $email)
+				function set_user_cookies($status, $email)
 				{
 					setcookie('userEmail', $email, time() + (86400 * 7));
 					setcookie('loggedIn', true, time() + (86400 * 7));
 					setcookie('userStatus', $status, time() + (86400 * 7));
 				}
-				var_dump($pass);
-				var_dump($user_result);
-				var_dump($userHashedPass);
-				var_dump(password_verify($pass, $userHashedPass));
+
+
+				// var_dump($pass);
+				// var_dump($user_result);
+				// var_dump($userHashedPass);
+				// var_dump(password_verify($pass, $userHashedPass));
 
 				if ($admin_result && password_verify($pass, $adminHashedPass)) {
-					setUserCookies('admin', $_POST['loginEmail']);
+					set_user_cookies('admin', $_POST['loginEmail']);
 					header('Location: admin.php');
 					exit;
-				} elseif ($user_result && password_verify($pass, $userHashedPass)) {
-					setUserCookies('customer', $_POST['loginEmail']);
+				} 
+				else if ($user_result && password_verify($pass, $userHashedPass)) {
+					set_user_cookies('customer', $_POST['loginEmail']);
 					header('Location: user.php');
 					exit;
-				} else {
+				} 
+				else {
 					echo "<p class='text-danger'>Login failed. Please check your email and password.</p>";
 				}
 			}

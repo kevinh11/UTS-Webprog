@@ -20,7 +20,6 @@
 
   <div class='promo-section'>
       
-
   </div>
 
   <?php
@@ -29,5 +28,6 @@
 
   <script src='jsFiles/user.js'></script>
   <script src='jsFiles/navbar.js'></script>
+  <script src='jsFiles/shoppingCart.js'></script>
 </body>
 

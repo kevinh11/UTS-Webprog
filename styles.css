@@ -16,6 +16,22 @@ header {
     display: none;
 } 
 
+header a {
+    text-decoration: none;
+    color:black;
+}
+
+.shopping-cart {
+    display: none;
+    position: absolute;
+    top:70px;
+    right:0;
+    
+    min-width: 20vw;
+    background-color: #FE4444;
+}
+
+
 body {
     min-height:100vh;
     width: 100vw;
@@ -34,6 +50,7 @@ footer {
 
 }
 
+
 .login-page {
 
     min-height: 90vh;
@@ -47,6 +64,12 @@ footer {
     aspect-ratio: 1/1;
 }
 
+.utility-icon {
+    width: 30px;
+    height: 30px;
+
+}
+
 input[type='password'], input[type='text'], input[type='email'] {
     
 }
@@ -54,8 +77,9 @@ input[type='password'], input[type='text'], input[type='email'] {
 .footer-bottom {
     background-color: #FE4444;
     width: 100%;
-   
 }
+
+
 
 /* .form-group {
     display: flex;
@@ -96,6 +120,8 @@ input[type='password'], input[type='text'], input[type='email'] {
     
 }
 
+
+
 #hero-img {
     width: 50%;
     transition: 0.5s;
@@ -107,6 +133,44 @@ input[type='password'], input[type='text'], input[type='email'] {
     min-height: 90vh;
 }
 
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap:10px;
+}
+
+.menu-items input {
+    border-width: 0;
+    width:40px;
+    height:20px;
+}
+.menu-card {
+    border-radius: 15px;
+    width: 300px;
+    height:max-content;
+    background-color: #FE4444;
+}
+
+.menu-card img {
+    width: 300px;
+    aspect-ratio: 16/9;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.amount {
+    gap:5px;
+}
+
+.order {
+    gap:10px;
+}
+
+
+.cart-food-icon {
+    width: 50px;
+    height: 50px;
+}
 @media screen and (max-width:800px) {
     #hero-image {
         order: 1;
@@ -145,5 +209,9 @@ input[type='password'], input[type='text'], input[type='email'] {
 
     #navbar-container > * {
         font-size:3rem;
+    }
+
+    .menu-items {
+        grid-template-columns: 1fr;
     }
 }
