@@ -1,7 +1,7 @@
+DROP DATABASE restaurant;
 CREATE DATABASE restaurant;
 USE restaurant;
 
-DROP DATABASE restaurant;
 
 CREATE TABLE menu(
 	food_id VARCHAR(5) NOT NULL, 
@@ -17,7 +17,7 @@ CREATE TABLE user(
     user_first VARCHAR(30), 
 	user_last VARCHAR(30), 
     user_email VARCHAR(30),
-	user_pass VARCHAR(30), 
+	user_pass VARCHAR(100), 
     user_birth DATE,
     user_gender VARCHAR(10),
     CHECK (user_gender IN ('M', 'F')),
@@ -29,7 +29,7 @@ CREATE TABLE admin(
     admin_first VARCHAR(30), 
 	admin_last VARCHAR(30), 
     admin_email VARCHAR(30),
-	admin_pass VARCHAR(30), 
+	admin_pass VARCHAR(100), 
     admin_birth DATE,
     admin_gender VARCHAR(10),
     CHECK (admin_gender IN ('M', 'F')),

@@ -63,47 +63,54 @@ include('components/header.php');
 		<?php
 		$conn = mysqli_connect('localhost', 'root', '', 'restaurant');
 
-		// if($_SERVER) add the captcha check here?
-		if (isset($_POST['loginPass'])) {
-			$email = $_POST['loginEmail'];
-			$pass = $_POST['loginPass'];
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			if (isset($_POST['loginPass'])) {
+				$email = $_POST['loginEmail'];
+				$pass = $_POST['loginPass'];
 
-			$query = "SELECT admin_pass FROM admin WHERE admin_email = ?";
-			$admin_check = $conn->prepare($query);
-			$admin_check->bind_param("s", $email);
-			$admin_check->execute();
-			$admin_check->bind_result($hashedPass);
-			$admin_result = $admin_check->fetch();
+				$adminHashedPass = '';
+				$userHashedPass = '';
 
-			$query = "SELECT user_pass FROM user WHERE user_email = ?";
-			$user_check = $conn->prepare($query);
-			$user_check->bind_param("s", $email);
-			$user_check->execute();
-			$user_check->bind_result($hashedPass);
-			$user_result = $user_check->fetch();
-			
-			
-			function setUserCookies($status, $email) {
-				setcookie('userEmail', $email, time() + (86400 * 7));
-				setcookie('loggedIn', true, time() + (86400 * 7)); 
-				setcookie('userStatus',$status, time() + (86400 * 7));
+				$query = "SELECT admin_pass FROM admin WHERE admin_email = ?";
+				$admin_check = $conn->prepare($query);
+				$admin_check->bind_param("s", $email);
+				$admin_check->execute();
+				$admin_check->bind_result($adminHashedPass);
+				$admin_result = $admin_check->fetch();
 
-			}
-			if ($admin_result && password_verify($pass, $hashedPass)) {
-				setUserCookies('admin', $_POST['loginEmail']);
-				header('Location:admin.php');
-				exit;
-			} 
-			
-			else if ($user_result && password_verify($pass, $hashedPass)) {
-				setUserCookies('customer', $_POST['loginEmail']);
-				header('Location:user.php');
-			} 
-			
-			else {
-				echo "<p class='text-danger'>Login failed. Please check your email and password.</p>";
+				$query = "SELECT user_pass FROM user WHERE user_email = ?";
+				$user_check = $conn->prepare($query);
+				$user_check->bind_param("s", $email);
+				$user_check->execute();
+				$user_check->bind_result($userHashedPass);
+				$user_result = $user_check->fetch();
+
+				function setUserCookies($status, $email)
+				{
+					setcookie('userEmail', $email, time() + (86400 * 7));
+					setcookie('loggedIn', true, time() + (86400 * 7));
+					setcookie('userStatus', $status, time() + (86400 * 7));
+				}
+				var_dump($pass);
+				var_dump($user_result);
+				var_dump($userHashedPass);
+				var_dump(password_verify($pass, $userHashedPass));
+
+				if ($admin_result && password_verify($pass, $adminHashedPass)) {
+					setUserCookies('admin', $_POST['loginEmail']);
+					header('Location: admin.php');
+					exit;
+				} elseif ($user_result && password_verify($pass, $userHashedPass)) {
+					setUserCookies('customer', $_POST['loginEmail']);
+					header('Location: user.php');
+					exit;
+				} else {
+					echo "<p class='text-danger'>Login failed. Please check your email and password.</p>";
+				}
 			}
 		}
+
+
 		?>
 	</div>
 	<?php
