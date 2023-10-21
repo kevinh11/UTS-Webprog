@@ -19,9 +19,13 @@
   </div>
 
   <div class='promo-section'>
-    
+      
 
   </div>
+
+  <?php
+    include('components/footer.php');
+  ?>
 
   <script src='jsFiles/user.js'></script>
   <script src='jsFiles/navbar.js'></script>

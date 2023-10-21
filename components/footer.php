@@ -1,4 +1,4 @@
-<footer class='mt-4 container-fluid d-flex flex-column'>
+<footer class='mt-4 d-flex flex-column'>
   <div class="footer-top d-flex flex-row justify-content-between p-4">
     <div class="footer-options d-flex flex-column jusitfy-content-start">
       <h6>Hubungi Kami</h6>
@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-bottom d-flex justify-content-between text-white">
+  <div class="footer-bottom px-4 py-1 d-flex justify-content-between text-white">
     <h5>copyright @2023 Restoran - All Rights Reserved</h5>
   </div>
 </footer>

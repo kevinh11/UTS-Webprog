@@ -5,9 +5,10 @@ function preventSubmission(event) {
   const captchaForm = document.getElementById('captchaForm');
 
   if (captchaForm.value != captchaText.textContent) {
+    alert('please insert the correct captcha');
+
     event.preventDefault();
     window.history.back();
-    alert('please insert the correct captcha');
   }
 
   else {

@@ -20,7 +20,7 @@ body {
     min-height:100vh;
     width: 100vw;
     overflow-x: hidden;
-
+    
     font-family: 'Hammersmith One',sans-serif;
 }
 #anchor{
@@ -34,6 +34,19 @@ footer {
 
 }
 
+.login-page {
+
+    min-height: 90vh;
+}
+.socials-images {
+    gap:5px;
+}
+
+.socials-images img{
+    width: 40px;
+    aspect-ratio: 1/1;
+}
+
 input[type='password'], input[type='text'], input[type='email'] {
     
 }
@@ -41,6 +54,7 @@ input[type='password'], input[type='text'], input[type='email'] {
 .footer-bottom {
     background-color: #FE4444;
     width: 100%;
+   
 }
 
 /* .form-group {
@@ -88,6 +102,10 @@ input[type='password'], input[type='text'], input[type='email'] {
     aspect-ratio: 16/9;
 }
 
+.menu-area {
+    width: 100vw;
+    min-height: 90vh;
+}
 
 @media screen and (max-width:800px) {
     #hero-image {
@@ -107,6 +125,9 @@ input[type='password'], input[type='text'], input[type='email'] {
         display: flex;
     }
 
+    #hero-img {
+        width: 100%;
+    }
     #navbar-container {
         display: flex;
         flex-direction: column;
@@ -115,9 +136,10 @@ input[type='password'], input[type='text'], input[type='email'] {
         width: 100vw;
         min-height: 1000px;
         position: absolute;
-        top: 70px;
+        top: -3000px;
         left:0px;
         background: #FF4848;
+        transition: 0.5s;
         
     }
 

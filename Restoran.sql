@@ -49,4 +49,4 @@ VALUES
 	('F0010', 'Kopi', 'Minuman', 'Kopi adalah minuman yang terbuat dari biji kopi yang digiling', 5000, 'gambarMenu/kopi.jpg');
 
 
-    
+SELECT * FROM MENU;

@@ -14,9 +14,11 @@
                 </li>
             </ul>
         </nav>
-        <div class="navbar-text ms-auto">
+        <div class="navbar-text">
             Lokasi
         </div>
+
+        
        
     </div>
  

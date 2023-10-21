@@ -4,28 +4,8 @@
 
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-	<header class="navbar navbar-expand-lg navbar-light">
-		<div class="container">
-			<a class="navbar-brand" href="#"><img src="logo.png" alt="Logo"></a>
-			<nav class="navbar-nav mr-3">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Menu</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Promo</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Events</a>
-					</li>
-				</ul>
-			</nav>
-			<div class="navbar-text ms-auto">
-				Lokasi
-			</div>
-		</div>
-	</header>
-	<div>
+	
+	<div class='login-page'>
 		<div class="container mt-5 d-flex flex-column justify-content-center ">
 			<div class="row justify-content-center">
 				<div class="col-md-6">
@@ -104,7 +84,6 @@
 					setcookie('userStatus', 'customer', time() + (86400 * 7));
 
 					header('Location:user.php');
-					exit;
 				} else {
 					echo "<p class='text-danger'>Login failed. Please check your email and password.</p>";
 				}
