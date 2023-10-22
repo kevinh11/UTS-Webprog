@@ -42,12 +42,12 @@ VALUES
 	('F0002', 'Teh Botol', 'Teh Manis yang menyegarkan', 'Minuman', 5000, 'gambarMenu/tehBotol.jpg'), 
 	('F0003', 'Nasi Ayam Geprek', 'Ayam Goreng Krispi disajikan dengan sambal bawang serta nasi putih', 'Makanan', 20000, 'gambarMenu/nasiAyamGeprek.jpg'),
 	('F0004', 'Nasi Goreng Seafood', 'Nasi ditumis dengan rempah-rempah dan campuran seafood', 'Makanan', 25000, 'gambarMenu/nasiGorengSeafood.jpg'),
-	('F0005', 'Bakmi Ayam', 'Makanan', 'Mie dengan racikan bumbu rahasia dan ayam jamur spesial', 20000, 'gambarMenu/bakmiAyam.jpg'), 
-	('F0006', 'Soto Ayam', 'Makanan', 'Soto Ayam adalah hidangan sup tradisional Indonesia yang terbuat dari kaldu ayam yang kaya rasa, disajikan dengan potongan ayam, mie, dan bumbu-bumbu rempah', 15000, 'gambarMenu/sotoAyam.jpg'),
-	('F0007', 'Sate Kambing', 'Makanan', 'Sate Kambing adalah hidangan sate yang terbuat dari daging kambing yang dipanggang di atas bara api', 30000, 'gambarMenu/sateKambing.jpg'),
-	('F0008', 'Es Jeruk', 'Minuman', 'Es Jeruk adalah minuman segar yang terbuat dari perasan jeruk manis yang dicampur dengan es dan gula', 6000, 'gambarMenu/esJeruk.jpg'),
-	('F0009', 'Nasi Putih', 'Makanan', 'Nasi Putih adalah beras yang dimasak hingga matang', 10000, 'gambarMenu/nasiPutih.jpg'),
-	('F0010', 'Kopi', 'Minuman', 'Kopi adalah minuman yang terbuat dari biji kopi yang digiling', 5000, 'gambarMenu/kopi.jpg');
+	('F0005', 'Bakmi Ayam', 'Mie dengan racikan bumbu rahasia dan ayam jamur spesial', 'Makanan', 20000, 'gambarMenu/bakmiAyam.jpg'), 
+	('F0006', 'Soto Ayam', 'Soto Ayam adalah hidangan sup tradisional Indonesia yang terbuat dari kaldu ayam yang kaya rasa, disajikan dengan potongan ayam, mie, dan bumbu-bumbu rempah', 'Makanan', 15000, 'gambarMenu/sotoAyam.jpg'),
+	('F0007', 'Sate Kambing', 'Sate Kambing adalah hidangan sate yang terbuat dari daging kambing yang dipanggang di atas bara api', 'Makanan', 30000, 'gambarMenu/sateKambing.jpg'),
+	('F0008', 'Es Jeruk', 'Es Jeruk adalah minuman segar yang terbuat dari perasan jeruk manis yang dicampur dengan es dan gula', 'Minuman', 6000, 'gambarMenu/esJeruk.jpg'),
+	('F0009', 'Nasi Putih', 'Nasi Putih adalah beras yang dimasak hingga matang', 'Makanan', 10000, 'gambarMenu/nasiPutih.jpg'),
+	('F0010', 'Kopi', 'Kopi adalah minuman yang terbuat dari biji kopi yang digiling', 'Minuman', 5000, 'gambarMenu/kopi.jpg');
 
 
 SELECT * FROM MENU;
