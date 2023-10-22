@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand-lg p-3">
-    <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo"></a>
+    <a class="navbar-brand" href="user.php"><img src="logo.png" alt="Logo"></a>
     <div id='navbar-container' class="container">
         <nav class="d-flex flex-row navbar-nav mr-3 ">
             <ul class="navbar-nav">
@@ -42,7 +42,8 @@
 
                 else {
                     $output =  
-                    '<a class="navbar-icon" href="login.php"> 
+                    '<a class="navbar-icon" href="login.php">
+                        Log in 
                         <i class="fa-solid fa-right-to-bracket"></i>
                     </a>';
                 }
