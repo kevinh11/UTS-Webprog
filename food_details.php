@@ -75,7 +75,7 @@ include('components/header.php');
             const image = card.querySelector('.menu-card-img');
             const desc = card.querySelector('.food-info');
 
-            card.addEventListener('mouseover', () => {
+            image.addEventListener('mouseover', () => {
                 image.style.filter = 'brightness(50%)';
                 desc.style.opacity = 1;
 
@@ -84,12 +84,12 @@ include('components/header.php');
                 desc.querySelector('.description').innerHTML = 'Harga: Rp.' + price + '<br>' + description;
             });
 
-            card.addEventListener('mouseout', () => {
+            image.addEventListener('mouseout', () => {
                 image.style.filter = 'brightness(100%)';
                 desc.style.opacity = 0;
             });
 
-            card.addEventListener('click', function() {
+            image.addEventListener('click', function() {
                 const foodId = card.getAttribute('data-food-id');
                 window.location.href = 'food_details.php?id=' + foodId;
             });
