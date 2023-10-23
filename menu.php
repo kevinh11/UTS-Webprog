@@ -4,7 +4,7 @@ include('components/header.php');
 
 <body>
   <?php
-    include('components/navbar.php');
+  include('components/navbar.php');
   ?>
 
   <div class="menu-area d-flex flex-column align-items-center justify-content-center">
@@ -13,15 +13,17 @@ include('components/header.php');
     <div class='menu-items mt-4'>
       <?php
       $conn = mysqli_connect('localhost', 'root', '', 'restaurant');
-      $showMenu = 'SELECT * FROM MENU';
+      $showMenu = 'SELECT * FROM MENU ORDER BY food_category';
       $res = mysqli_query($conn, $showMenu);
       $card = '';
       while ($row = $res->fetch_array()) {
         if (isset($_COOKIE['loggedIn'])) {
           $card =
-            "<div class='menu-card' >
-              <img class='menu-card-img' data-food-id=$row[food_id] src= $row[food_imgpath]>
-              </img>
+            "<div class='menu-card' data-food-id=$row[food_id] data-food-description='$row[food_desc]' data-food-category='$row[food_category]'>
+              <img class='menu-card-img' src= $row[food_imgpath]>
+              <div class='food-info'>
+              <p class='description'></p>
+              </div>
   
               <div class='menu-card-bottom d-flex flex-row justify-content-around' > 
                 <div class='menu-card-info d-flex p-3 flex-column justify-content-center'>
@@ -40,8 +42,8 @@ include('components/header.php');
             </div>";
         } else {
           $card =
-            "<div class='menu-card'>
-              <img class='menu-card-img' src= $row[food_imgpath]>
+            "<div class='menu-card' data-food-id=$row[food_id] data-food-description='$row[food_desc]' data-food-category='$row[food_category]'>
+            <img class='menu-card-img' src= $row[food_imgpath]>
               </img>
   
               <div class='menu-card-bottom d-flex flex-row justify-content-around'> 
@@ -62,15 +64,33 @@ include('components/header.php');
     </div>
   </div>
   <?php
-    include('components/footer.php');
+  include('components/footer.php');
   ?>
   <script src='jsFiles/navbar.js'></script>
   <script src="./node_modules/axios/dist/axios.min.js"></script>
   <script>
-    const menuCards = document.querySelectorAll('.menu-card-img');
+    const menuCards = document.querySelectorAll('.menu-card');
+
     menuCards.forEach(card => {
+      const image = card.querySelector('.menu-card-img');
+      const desc = card.querySelector('.food-info');
+
+      card.addEventListener('mouseover', () => {
+        image.style.filter = 'brightness(50%)';
+        desc.style.opacity = 1;
+
+        const description = card.getAttribute('data-food-description');
+        const category = card.getAttribute('data-food-category');
+        desc.querySelector('.description').innerHTML = 'Kategori: ' + category + '<br>' + description;
+      });
+
+      card.addEventListener('mouseout', () => {
+        image.style.filter = 'brightness(100%)';
+        desc.style.opacity = 0;
+      });
+
       card.addEventListener('click', function() {
-        const foodId = this.getAttribute('data-food-id');
+        const foodId = card.getAttribute('data-food-id');
         window.location.href = 'food_details.php?id=' + foodId;
       });
     });

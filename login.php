@@ -48,10 +48,6 @@ include('components/header.php');
 						$_SESSION['captcha'] = $captcha;
 					}
 					?>
-					<a class="btn btn-outline-dark ml-3 mt-3" href="/users/googleauth" role="button" style="text-transform:none">
-						<img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-						Sign in with Google
-					</a>
 				<div class="text-center mt-3">
 						<p>Tidak punya akun? <a href="signup.php" id="anchor">Bikin akun baru aja!</a></p>
 					</div>

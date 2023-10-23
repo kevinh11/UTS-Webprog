@@ -1,5 +1,6 @@
 <header class="navbar navbar-expand-lg p-3">
-    <a class="navbar-brand" href="index.php"><img src="logo.png" alt="Logo"></a>
+    <link rel="stylesheet" href="styles.css">
+    <a class="navbar-brand" href="index.php"><img src="otherAsset/logo.jpg" alt="Logo" class="logo"></a>
     <div id='navbar-container' class="container">
         <nav class="d-flex flex-row navbar-nav mr-3 ">
             <ul class="navbar-nav">

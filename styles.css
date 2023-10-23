@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins:wght@300&display=swap');
 
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.food-info {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-bottom: 3rem;
+}
+
 .detail-img{
     max-width: 40%;
     height: auto;
@@ -51,6 +70,9 @@ body {
     overflow-x: hidden;
     
     font-family: 'Hammersmith One',sans-serif;
+}
+body::-webkit-scrollbar {
+    width: 0.2em;
 }
 #anchor{
     text-decoration: none;
@@ -191,6 +213,8 @@ h1{
     width: 300px;
     height:max-content;
     background-color: #FE4444;
+    cursor: pointer;
+    position: relative;
 }
 
 .menu-card img {
@@ -198,6 +222,7 @@ h1{
     aspect-ratio: 16/9;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
+    transition: filter 0.3s;
 }
 
 .amount {

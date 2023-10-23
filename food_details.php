@@ -45,9 +45,11 @@ include('components/header.php');
             $card = '';
             while ($row2 = $res->fetch_array()) {
                 $card =
-                    "<div class='menu-card' data-food-id=$row2[food_id]>
+                    "<div class='menu-card' data-food-id=$row2[food_id] data-food-price=$row2[food_price] data-food-description='$row2[food_desc]'>
             <img class='menu-card-img' src= $row2[food_imgpath]>
-            </img>
+            <div class='food-info'>
+            <p class='description'></p>
+            </div>
 
             <div class='menu-card-bottom d-flex flex-row justify-content-around' > 
             <div class='menu-card-info d-flex p-3 flex-row justify-content-center'>
@@ -68,13 +70,32 @@ include('components/header.php');
     <script src='jsFiles/navbar.js'></script>
     <script>
         const menuCards = document.querySelectorAll('.menu-card');
+
         menuCards.forEach(card => {
+            const image = card.querySelector('.menu-card-img');
+            const desc = card.querySelector('.food-info');
+
+            card.addEventListener('mouseover', () => {
+                image.style.filter = 'brightness(50%)';
+                desc.style.opacity = 1;
+
+                const description = card.getAttribute('data-food-description');
+                const price = card.getAttribute('data-food-price');
+                desc.querySelector('.description').innerHTML = 'Harga: Rp.' + price + '<br>' + description;
+            });
+
+            card.addEventListener('mouseout', () => {
+                image.style.filter = 'brightness(100%)';
+                desc.style.opacity = 0;
+            });
+
             card.addEventListener('click', function() {
-                const foodId = this.getAttribute('data-food-id');
+                const foodId = card.getAttribute('data-food-id');
                 window.location.href = 'food_details.php?id=' + foodId;
             });
         });
     </script>
+
     <script src='jsFiles/shoppingCart.js'></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
