@@ -103,7 +103,7 @@ include('components/header.php');
 				} 
 				else if ($user_result && password_verify($pass, $userHashedPass)) {
 					set_user_cookies('customer', $_POST['loginEmail']);
-					header('Location: user.php');
+					header('Location: index.php');
 					exit;
 				} 
 				else {
