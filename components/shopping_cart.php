@@ -1,8 +1,6 @@
 <div class="shopping-cart">
   <div class='d-flex h-100 flex-column justify-content-between'>
     <div class='orders-area d-flex flex-column'>
-      hi
-    
       <div class="order d-flex flex-row align-items-center">
         <img class='cart-food-icon'src='icons/facebook.png'></img>
         <div class="order-details d-flex flex-column">
@@ -16,19 +14,21 @@
           </div>
         </div>
       </div>
-
     </div>
-
     <div class="order-bottom p-3 d-flex flex-row justify-content-around">
       <div class="order-bottom-details">
         <h5> Subtotal: </h5>
         <p id='subtotal-value'>0</p>
       </div>
 
-      <button id='submit-cart' class='btn btn-danger'>
-        <a href='checkout.php'>Check out</a>
-      </button>
-
+      <!-- kadang2 perlu di click 2 kali -->
+      <a href='checkOutPage.php'>
+        <button id='submit-cart' class='btn btn-danger'>
+          Check out
+        </button>
+      </a>
+      
+    
     </div>
       
    

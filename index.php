@@ -7,7 +7,7 @@
     include('components/navbar.php')
   ?>
   <div class="hero d-flex flex-column flex-lg-row justify-content-around align-items-center p-4">
-    <div class="hero-text">
+    <div class="mt-sm-4 hero-text">
       <h2>Get the best food <br> Tangerang has to offer!</h2>
       <button class="mt-4 btn btn-danger">
         <a href='menu.php'>Order Now!</a>
