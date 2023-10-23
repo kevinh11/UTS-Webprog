@@ -17,13 +17,15 @@
     box-sizing: border-box;
     font-family: 'Hammersmith One', sans-serif;
 }
+
 header {
     position: relative;
     background-color: #FE4444;
     min-height: 12vh;
+    width: 100vw;
 }
 
- .hamburger-menu {
+.hamburger-menu {
     display: none;
 } 
 
@@ -55,15 +57,11 @@ body {
 }
 
 footer {
-    
     background-color: #D9D9D9;
     width: 100vw;
-
 }
 
-
 .login-page {
-
     min-height: 90vh;
 }
 .socials-images {
@@ -78,7 +76,6 @@ footer {
 .utility-icon {
     width: 30px;
     height: 30px;
-
 }
 
 input[type='password'], input[type='text'], input[type='email'] {
@@ -215,6 +212,28 @@ h1{
 .cart-food-icon {
     width: 80px;
     height: 50px;
+}
+
+.admin-btn {
+    background-color: #FE4444;
+}
+
+#admin-table {
+    max-width: 1000px;
+}
+
+#edit-menu-form {
+    max-width: 600px;
+}
+
+#edit-body {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.tambah-menu-page {
+    width: 100vw;
+    min-height: 100vh;
 }
 @media screen and (max-width:800px) {
     #hero-image {

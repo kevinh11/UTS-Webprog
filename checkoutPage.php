@@ -54,7 +54,6 @@
         echo "<h6>Pajak: 10% </h6> ";
         echo "<h5>Total: $final</h5>";
 
-      
       ?>
     </div>
   
