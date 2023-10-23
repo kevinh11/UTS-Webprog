@@ -12,7 +12,7 @@
       <div class='socials-images d-flex'>
         <img src="icons/facebook.png" alt="facebook-icon">
         <img src="icons/instagram.jpg" alt="instagram-icon">
-        <img src="icons/twitter.jpg" alt="twitter-icon">
+        <img src="icons/twitter.png" alt="twitter-icon">
       </div>
     </div>
   </div>
