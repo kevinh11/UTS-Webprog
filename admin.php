@@ -63,6 +63,7 @@
 
 
 <?php
+if (isset($_COOKIE['loggedIn']) && $_COOKIE['userStatus'] == 'admin'){
     if (isset($_GET['delete'])) {
         $deleteFood = $_GET['delete'];
         $q3 = "DELETE FROM menu WHERE food_id='$deleteFood'";
@@ -70,6 +71,9 @@
     }
 
     mysqli_close($con);
+} else{
+    echo '<p class="text-danger"> NO PERMISSION TO EDIT. <br> LOG IN IF YOU ARE AN ADMIN</p>';
+}
 ?>
 
 <footer class="mt-4 d-flex flex-column">

@@ -21,7 +21,7 @@ include('components/header.php');
           $card =
             "<div class='menu-card' data-food-id=$row[food_id] data-food-description='$row[food_desc]' data-food-category='$row[food_category]'>
               <img class='menu-card-img' src= $row[food_imgpath]>
-              <div class='food-info'>
+              <div class='food-info-menu'>
               <p class='description'></p>
               </div>
   
@@ -44,7 +44,9 @@ include('components/header.php');
           $card =
             "<div class='menu-card' data-food-id=$row[food_id] data-food-description='$row[food_desc]' data-food-category='$row[food_category]'>
             <img class='menu-card-img' src= $row[food_imgpath]>
-              </img>
+            <div class='food-info-menu'>
+            <p class='description'></p>
+            </div>
   
               <div class='menu-card-bottom d-flex flex-row justify-content-around'> 
                 <div class='menu-card-info d-flex p-3 flex-column justify-content-center '>
@@ -73,23 +75,24 @@ include('components/header.php');
 
     menuCards.forEach(card => {
       const image = card.querySelector('.menu-card-img');
-      const desc = card.querySelector('.food-info');
+      const desc = card.querySelector('.food-info-menu');
 
-      card.addEventListener('mouseover', () => {
+      image.addEventListener('mouseover', () => {
         image.style.filter = 'brightness(50%)';
         desc.style.opacity = 1;
 
         const description = card.getAttribute('data-food-description');
         const category = card.getAttribute('data-food-category');
+        console.log(description);
         desc.querySelector('.description').innerHTML = 'Kategori: ' + category + '<br>' + description;
       });
 
-      card.addEventListener('mouseout', () => {
+      image.addEventListener('mouseout', () => {
         image.style.filter = 'brightness(100%)';
         desc.style.opacity = 0;
       });
 
-      card.addEventListener('click', function() {
+      image.addEventListener('click', function() {
         const foodId = card.getAttribute('data-food-id');
         window.location.href = 'food_details.php?id=' + foodId;
       });

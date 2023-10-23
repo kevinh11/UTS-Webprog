@@ -1,24 +1,24 @@
-
 <?php
-    include('components/header.php');
-    include('components/admin_redirect.php');
+include('components/header.php');
+include('components/admin_redirect.php');
 ?>
 
 
 <body id='edit-body' class='d-flex flex-column align-items-center'>
     <?php
-        include('components/navbar.php');
+    include('components/navbar.php');
     ?>
 
     <h1>Edit Menu</h1>
 
     <?php
-        $con = mysqli_connect("localhost", "root", "", "restaurant");
+    $con = mysqli_connect("localhost", "root", "", "restaurant");
 
-        if (!$con) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+    if (!$con) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
 
+    if (isset($_COOKIE['loggedIn']) && $_COOKIE['userStatus'] == 'admin') {
         if (isset($_GET['edit'])) {
             $q2 = "SELECT * FROM menu WHERE food_id='" . $_GET['edit'] . "'";
             $query2 = mysqli_query($con, $q2);
@@ -29,6 +29,9 @@
                 echo "Data not found.";
             }
         }
+    } else {
+        echo '<p class="text-danger"> NO PERMISSION TO EDIT. <br> LOG IN IF YOU ARE AN ADMIN</p>';
+    }
     ?>
     <form id='mt-3 mb-3 edit-menu-form' method="POST" enctype="multipart/form-data">
         <div class="mb-3">
@@ -70,31 +73,36 @@
     </form>
 
     <?php
-    if (isset($_POST['submit'])) {
-        $id = $_POST['food_id'];
-        $name = $_POST['food_name'];
-        $category = $_POST['food_category'];
-        $desc = $_POST['food_desc'];
-        $price = $_POST['food_price'];
-        $newImage = $_FILES['food_imgpath']['name'];
-        $oldImage = $data_lama['food_imgpath'];
+    if (isset($_COOKIE['loggedIn']) && $_COOKIE['userStatus'] == 'admin') {
+        if (isset($_POST['submit'])) {
+            $id = $_POST['food_id'];
+            $name = $_POST['food_name'];
+            $category = $_POST['food_category'];
+            $desc = $_POST['food_desc'];
+            $price = $_POST['food_price'];
+            $newImage = $_FILES['food_imgpath']['name'];
+            $oldImage = $data_lama['food_imgpath'];
 
-        if ($_FILES['food_imgpath']['error'] == 0) {
-            $newImage = 'gambarMenu/' . $_FILES['food_imgpath']['name'];
-        } else {
-            $newImage = $oldImage;
+            if ($_FILES['food_imgpath']['error'] == 0) {
+                $newImage = 'gambarMenu/' . $_FILES['food_imgpath']['name'];
+            } else {
+                $newImage = $oldImage;
+            }
+
+            $sql = "UPDATE menu SET food_id = '$id', food_name ='$name', food_category ='$category', 
+                        food_desc = '$desc', food_price = '$price', food_imgpath='$newImage' WHERE food_id='" . $data_lama['food_id'] . "'";
+
+            if (mysqli_query($con, $sql)) {
+                header("Location: Admin.php");
+                exit();
+            } else {
+                echo "Error updating record: " . mysqli_error($con);
+            }
         }
-
-        $sql = "UPDATE menu SET food_id = '$id', food_name ='$name', food_category ='$category', 
-                    food_desc = '$desc', food_price = '$price', food_imgpath='$newImage' WHERE food_id='" . $data_lama['food_id'] . "'";
-
-        if (mysqli_query($con, $sql)) {
-            header("Location: Admin.php");
-            exit();
-        } else {
-            echo "Error updating record: " . mysqli_error($con);
-        }
+    } else {
+        echo '<p class="text-danger"> NO PERMISSION TO EDIT. <br> LOG IN IF YOU ARE AN ADMIN</p>';
     }
+
 
     mysqli_close($con);
     ?>
@@ -103,7 +111,7 @@
 
 
 <?php
-    include('components/footer.php');
+include('components/footer.php');
 ?>
 
 </html>
