@@ -18,11 +18,6 @@
     margin-bottom: 3rem;
 }
 
-.description {
-    z-index: 2;
-    padding: 5px;
-}
-
 .detail-img{
     max-width: 40%;
     height: auto;
@@ -62,7 +57,7 @@ header a {
     position: absolute;
     top:70px;
     right:0;
-    z-index: 10;
+    
     min-width: 20vw;
     background-color: #FE4444;
 }
@@ -217,7 +212,6 @@ h1{
     width: 300px;
     height:max-content;
     background-color: #FE4444;
-    cursor: pointer;
     position: relative;
 }
 
@@ -227,6 +221,7 @@ h1{
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     transition: filter 0.3s;
+    cursor: pointer;
 }
 
 .amount {
