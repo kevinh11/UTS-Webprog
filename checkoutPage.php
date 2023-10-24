@@ -12,7 +12,7 @@
   ?>
 
   <div class='p-2 checkout-area d-flex flex-column align-items-center justify-content-start'>
-  <a href="success.php" class="btn btn-danger">Click to Pay</a>
+  <!-- <a href="success.php" class="btn btn-danger">Click to Pay</a> -->
     <h1>Checkout</h1>
 
     <div class='checkout-box shadow rounded d-flex flex-column'>
