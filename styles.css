@@ -72,7 +72,7 @@ header a {
     top:70px;
     right:0;
     
-    min-width: 20vw;
+    min-width: 15vw;
     background-color: #FE4444;
 }
 
@@ -226,7 +226,6 @@ h1{
     width: 300px;
     height:max-content;
     background-color: #FE4444;
-    cursor: pointer;
     position: relative;
 }
 
@@ -236,6 +235,7 @@ h1{
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     transition: filter 0.3s;
+    cursor: pointer;
 }
 
 .amount {
