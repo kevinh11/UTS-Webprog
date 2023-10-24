@@ -82,9 +82,6 @@ include('components/header.php');
 
         const description = card.getAttribute('data-food-description');
         const category = card.getAttribute('data-food-category');
-        desc.querySelector('.description').innerHTML = 'Kategori: ' + category + '<br>' + description;
-
-        console.log(category);
       });
 
       card.addEventListener('mouseout', () => {
