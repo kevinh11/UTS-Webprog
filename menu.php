@@ -20,16 +20,15 @@ include('components/header.php');
         if (isset($_COOKIE['loggedIn'])) {
           $card =
             "<div class='menu-card' data-food-id=$row[food_id] data-food-description='$row[food_desc]' data-food-category='$row[food_category]'>
-              <img class='menu-card-img' src= $row[food_imgpath]>
               <div class='food-info'>
-              <p class='description'></p>
-              </div>
+                <p class='description'></p>
+              </div>  
+              <img class='menu-card-img' src= $row[food_imgpath]>
   
               <div class='menu-card-bottom d-flex flex-row justify-content-around' > 
                 <div class='menu-card-info d-flex p-3 flex-column justify-content-center'>
                   <h5 class='food-name'> $row[food_name]</h5>
                   <p class='food-price'>Rp. $row[food_price]</p>
-                  
                 </div>
   
                 <div class='amount d-flex flex-row align-items-center'>
@@ -43,8 +42,10 @@ include('components/header.php');
         } else {
           $card =
             "<div class='menu-card' data-food-id=$row[food_id] data-food-description='$row[food_desc]' data-food-category='$row[food_category]'>
-            <img class='menu-card-img' src= $row[food_imgpath]>
-              </img>
+              <div class='food-info'>
+                <p class='description'></p>
+              </div>  
+              <img class='menu-card-img' src= $row[food_imgpath]></img>
   
               <div class='menu-card-bottom d-flex flex-row justify-content-around'> 
                 <div class='menu-card-info d-flex p-3 flex-column justify-content-center '>
@@ -82,6 +83,8 @@ include('components/header.php');
         const description = card.getAttribute('data-food-description');
         const category = card.getAttribute('data-food-category');
         desc.querySelector('.description').innerHTML = 'Kategori: ' + category + '<br>' + description;
+
+        console.log(category);
       });
 
       card.addEventListener('mouseout', () => {
@@ -90,6 +93,9 @@ include('components/header.php');
       });
 
       card.addEventListener('click', function() {
+        if (event.target.classList.contains('amount-input') || event.target.classList.contains('plus') || event.target.classList.contains('minus')) {
+            return;
+        }
         const foodId = card.getAttribute('data-food-id');
         window.location.href = 'food_details.php?id=' + foodId;
       });

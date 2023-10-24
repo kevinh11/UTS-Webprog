@@ -8,15 +8,19 @@
 .food-info {
     position: absolute;
     width: 100%;
-    height: 30%;
     background: rgba(0, 0, 0, 0.5);
     color: white;
     display: flex;
-    align-items: flex-start;
+    align-items: end;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s;
     margin-bottom: 3rem;
+}
+
+.description {
+    z-index: 2;
+    padding: 5px;
 }
 
 .detail-img{
@@ -58,7 +62,7 @@ header a {
     position: absolute;
     top:70px;
     right:0;
-    
+    z-index: 10;
     min-width: 20vw;
     background-color: #FE4444;
 }
@@ -227,6 +231,7 @@ h1{
 
 .amount {
     gap:5px;
+    z-index: 2;
 }
 
 .order {

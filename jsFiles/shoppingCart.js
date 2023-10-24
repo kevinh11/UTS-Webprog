@@ -6,7 +6,7 @@ const cartIcon = document.getElementById('cart-icon');
 const shoppingCart = document.querySelector('.shopping-cart');
 const orderArea = document.querySelector('.orders-area');
 
-//pakai JS biar user tidak harus refresh setiap kali data di input
+
 let cartItems = sessionStorage.getItem('cartItems');
 if (cartItems === null) {
   cartItems = [];
@@ -62,7 +62,7 @@ function displayCartItems(cart) {
   filteredCart.forEach(item => {
     const newEntry = document.createElement('div');
     newEntry.className = 'order-details p-3 d-flex flex-column';
-    newEntry.innerHTML = `<h5>${item['name']}</h5> <p>${item['originalPrice']}</p>  <div class='amount d-flex flex-row align-items-center'>
+    newEntry.innerHTML = `<h5 class='food-name'>${item['name']}</h5> <p class='food-price'>${item['originalPrice']}</p>  <div class='amount d-flex flex-row align-items-center'>
     <i class='plus fa fa-plus' aria-hidden='true'></i>
     <input class='amount-input' disabled type='number' min=0 max=10 value=0></input>
     <i class='minus fa fa-minus' aria-hidden='true'></i>
@@ -82,22 +82,20 @@ function updateExisting(cart, foodName, foodPrice, newVal) {
 }
 
 function modifyAmountValue(event, val, target) {
-  const amountInput = val == 1? target.nextElementSibling : target.previousElementSibling;
-  const prevVal = amountInput.value;
-  let newVal = val + parseInt(prevVal);
+  const amountInput = val === 1 ? target.nextElementSibling : target.previousElementSibling;
+  const prevVal = parseInt(amountInput.value);
+  let newVal = prevVal + val;
 
   if (newVal > 10) {
     newVal = 10;
-  }
-
-  else if (newVal < 0) {
+  } else if (newVal < 0) {
     newVal = 0;
   }
 
   amountInput.value = newVal;
   return newVal;
-
 }
+
 
 function extractPrice(str) {
   let price = parseInt(str.split('.')[1]);

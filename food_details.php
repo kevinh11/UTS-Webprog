@@ -46,10 +46,10 @@ include('components/header.php');
             while ($row2 = $res->fetch_array()) {
                 $card =
                     "<div class='menu-card' data-food-id=$row2[food_id] data-food-price=$row2[food_price] data-food-description='$row2[food_desc]'>
-            <img class='menu-card-img' src= $row2[food_imgpath]>
             <div class='food-info'>
             <p class='description'></p>
             </div>
+            <img class='menu-card-img' src= $row2[food_imgpath]>
 
             <div class='menu-card-bottom d-flex flex-row justify-content-around' > 
             <div class='menu-card-info d-flex p-3 flex-row justify-content-center'>

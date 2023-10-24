@@ -17,6 +17,6 @@
     </div>
   </div>
   <div class="footer-bottom px-4 py-1 d-flex justify-content-between text-white">
-    <h5>copyright @2023 Restoran - All Rights Reserved</h5>
+    <h5>copyright @2023 Bestoran - All Rights Reserved</h5>
   </div>
 </footer>
