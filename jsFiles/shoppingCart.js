@@ -6,7 +6,7 @@ const cartIcon = document.getElementById('cart-icon');
 const shoppingCart = document.querySelector('.shopping-cart');
 const orderArea = document.querySelector('.orders-area');
 
-
+//pakai JS biar user tidak harus refresh setiap kali data di input
 let cartItems = sessionStorage.getItem('cartItems');
 if (cartItems === null) {
   cartItems = [];
