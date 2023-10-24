@@ -38,7 +38,7 @@ CREATE TABLE admin(
 
 INSERT INTO menu
 VALUES
-	('F0001', 'Es Teh Tawar', 'Teh disaijkan dengan Es batu yang menyegarkan', 'Minuman', 5000, 'gambarMenu/esTehTawar.jpg'),
+	('F0001', 'Es Teh Tawar', 'Teh disajikan dengan Es batu yang menyegarkan', 'Minuman', 5000, 'gambarMenu/esTehTawar.jpg'),
 	('F0002', 'Teh Botol', 'Teh Manis yang menyegarkan', 'Minuman', 5000, 'gambarMenu/tehBotol.jpg'), 
 	('F0003', 'Nasi Ayam Geprek', 'Ayam Goreng Krispi disajikan dengan sambal bawang serta nasi putih', 'Makanan', 20000, 'gambarMenu/nasiAyamGeprek.jpg'),
 	('F0004', 'Nasi Goreng Seafood', 'Nasi ditumis dengan rempah-rempah dan campuran seafood', 'Makanan', 25000, 'gambarMenu/nasiGorengSeafood.jpg'),
