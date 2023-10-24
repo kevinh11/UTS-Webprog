@@ -63,14 +63,13 @@ function displayCartItems(cart) {
     const newEntry = document.createElement('div');
     newEntry.className = 'order-details p-3 d-flex flex-column';
     newEntry.innerHTML = `<h5 class='food-name'>${item['name']}</h5> <p class='food-price'>${item['originalPrice']}</p>  <div class='amount d-flex flex-row align-items-center'>
-    <i class='plus fa fa-plus' aria-hidden='true'></i>
-    <input class='amount-input' disabled type='number' min=0 max=10 value=0></input>
-    <i class='minus fa fa-minus' aria-hidden='true'></i>
+    <input class='amount-input' disabled type='number' min=0 max=10 value=${item.qty}></input>
   </div>`;
     orderArea.appendChild(newEntry);
   });
 }
-
+// <i class='plus fa fa-plus' aria-hidden='true'></i>
+// <i class='minus fa fa-minus' aria-hidden='true'></i>
 function updateExisting(cart, foodName, foodPrice, newVal) {
   for (const item of cart) {
     if (item['name'] === foodName) {

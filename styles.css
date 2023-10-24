@@ -18,6 +18,7 @@
     margin-bottom: 3rem;
 }
 
+
 .description {
     z-index: 2;
     padding: 5px;
@@ -171,9 +172,6 @@ input[type='password'], input[type='text'], input[type='email'] {
 
 }
 
-.checkout-box::-webkit-scrollbar {
-    display: none;
-}
 
 .checkout-item {
     gap:10px;

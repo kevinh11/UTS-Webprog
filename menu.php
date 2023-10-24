@@ -76,7 +76,7 @@ include('components/header.php');
       const image = card.querySelector('.menu-card-img');
       const desc = card.querySelector('.food-info');
 
-      card.addEventListener('mouseover', () => {
+      image.addEventListener('mouseover', () => {
         image.style.filter = 'brightness(50%)';
         desc.style.opacity = 1;
 
@@ -84,12 +84,12 @@ include('components/header.php');
         const category = card.getAttribute('data-food-category');
       });
 
-      card.addEventListener('mouseout', () => {
+      iamge.addEventListener('mouseout', () => {
         image.style.filter = 'brightness(100%)';
         desc.style.opacity = 0;
       });
 
-      card.addEventListener('click', function() {
+      image.addEventListener('click', function() {
         if (event.target.classList.contains('amount-input') || event.target.classList.contains('plus') || event.target.classList.contains('minus')) {
             // Click occurred in the amount area, do nothing
             return;
